@@ -349,13 +349,10 @@ def main():
 
             # Publish each NVR payload separately
             for payload in payloads:
-                # Create topic with NVR name for better organization
-                nvr_topic = f"{args.mqtt_topic}/{payload['DeviceID']}"
-
                 mqtt_publish(
                     broker=args.mqtt_broker,
                     port=args.mqtt_port,
-                    topic=nvr_topic,
+                    topic=args.mqtt_topic,
                     payload=payload,
                     username=args.mqtt_user or None,
                     password=args.mqtt_pass or None,
